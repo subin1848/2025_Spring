@@ -1,0 +1,7 @@
+a {
+    text-decoration-line: none;
+    color: gray;
+  }
+a:hover {
+    color: lightBlue;
+}

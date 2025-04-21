@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link href="../static/css/style.css">
+<body>
+    <th:block th:replace="~{fragments/menu::menuFragment}"></th:block>
+    <h1 th:text="'Score'"></h1>
+    <form action="score_result" method="POST">
+        이름 : <input type="text" name="name">
+        국어 : <input type="number" name="kor">
+        영어 : <input type="number" name="eng">
+        수학 : <input type="number" name="math">
+        <button type="submit">입력완료</button>
+    </form>
+</body>
+</html>

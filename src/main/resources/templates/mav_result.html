@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <th:block th:replace="~{fragments/menu::menuFragment}"></th:block>
+  <h1 th:text="|이름 : ${item}|"></h1>
+<!-- 변수와 문자열을 같이 사용할 경우, || 을 감싸주면 사용가능하다-->
+</body>
+</html>
