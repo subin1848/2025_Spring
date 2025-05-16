@@ -10,19 +10,37 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class MemoController {
     @Autowired
     private MemoService service;
 
-    @GetMapping("Memo")
-    public String memo(){
+    @GetMapping("/Memo")
+    public String listAll(Model model) {
+        List<MemoDTO> all = service.listAll();
+        model.addAttribute("data", all);
         return "memo_input";
     }
-    @PostMapping("/memo_result")
-    public String insert(MemoDTO m_DTO){
-        System.out.println("a:"+m_DTO.getMemo());
-        service.insert(m_DTO);
-        return "memo_result";
+
+    @PostMapping("/write_done")
+    public String insert(MemoDTO dto){
+        service.insert(dto);
+        return "redirect:/Memo";
+    }
+
+    @GetMapping("/edit/{idx}")
+    public String edit_form(@PathVariable("idx") int idx, Model model){
+        System.out.println("idx : " + idx);
+        MemoDTO dto = service.selectOne(idx);
+        model.addAttribute("one", dto);
+        return "edit_form";
+    }
+
+    @PostMapping("/edit")
+    public String edit_form(MemoDTO dto){
+        service.update(dto);
+        return "redirect:/Memo";
     }
 }

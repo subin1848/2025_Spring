@@ -18,17 +18,24 @@ public class MemoServiceImpl implements MemoService {
     }
 
     @Override
-    public void update(int idx) {
+    public void update(MemoDTO m_dto) {
+        m_dao.update(m_dto);
 
     }
 
     @Override
-    public void delete(int idx) {
+    public void delete(MemoDTO m_dto) {
+
 
     }
 
     @Override
-    public List<MemoDTO> list() {
-        return List.of();
+    public List<MemoDTO> listAll() {
+        return m_dao.listAll();
+    }
+
+    @Override
+    public MemoDTO selectOne(int idx) {
+        return m_dao.selectOne(idx);
     }
 }

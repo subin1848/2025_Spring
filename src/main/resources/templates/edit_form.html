@@ -13,16 +13,17 @@
 <body>
   <th:block th:replace="~{fragments/menu::menuFragment}"></th:block>
   <h1 th:text="'NOTE MEMO'"></h1>
-  <form action="write_done" method="post">
+  <form action="/edit" method="post">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">writer</label>
-        <input type="text" name="writer" class="form-control" id="exampleInputEmail1">
+          <input hidden="hidden" th:value="${one.idx}" name="idx"/>
+        <input type="text" name="writer" th:value="${one.writer}" class="form-control" id="exampleInputEmail1">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">memo</label>
-        <textarea name="memo" class="form-control" id="exampleInputPassword1"></textarea>
+        <textarea name="memo" th:text="${one.memo}" class="form-control" id="exampleInputPassword1"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Done</button>
+      <button type="submit" class="btn btn-primary">수정완료</button>
   </form>
 
   <h1 th:text="${list}"></h1>
